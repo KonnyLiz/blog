@@ -1,0 +1,6 @@
+1. Comenzar un nuevo proyecto de laravel
+    composer create-project --prefer-dist laravel/laravel nombre
+
+2. Conexion a la BD
+    - crear la BD
+    - configurar BD en .env
