@@ -11,3 +11,12 @@
 
 4. creando controlador, modelo y recursos de un solo
     php artisan make:model nombre -mcr
+
+5. estructura de tabla en migrate
+    - para actualizar campos en la BD usa 
+    php artisan migrate:refresh
+
+6. Construllendo la tabla
+    database/migrations/archivo
+    https://laravel.com/docs/5.0/schema
+    Mas ayuda para crear tablas
