@@ -4,3 +4,10 @@
 2. Conexion a la BD
     - crear la BD
     - configurar BD en .env
+    - en database/migrations se pueden ver los esquemas de la BD
+
+3. ejecutar las migraciones para actualizar la BD
+    php artisan migrate
+
+4. creando controlador, modelo y recursos de un solo
+    php artisan make:model nombre -mcr
