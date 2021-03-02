@@ -35,3 +35,12 @@
     php artisan route:list
 
 11. las fotos se guardan en storage/app/public/uploads
+
+12. para correr en una pc diferente
+    * instalar LAMPP o XAMPP
+    * clonar el repositorio
+    * dentro de la carpeta de proyecto ejecutar
+        composer install
+    * crear la BD
+        desde consola se crea y luego se crea un usuario con privilegios de administracion 
+        para que laravel pueda editar la BD
