@@ -18,6 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// rutas de empleados
+// rutas de empleados manualmente
 // los envialos a los controladores y metodos
-Route::get('/empleados', [EmpleadosController::class, 'index']);
+// Route::get('/empleados', [EmpleadosController::class, 'index']);
+
+// podemos crear un resource o repositorio de rutas con
+Route::resource('empleados', 'App\Http\Controllers\EmpleadosController');

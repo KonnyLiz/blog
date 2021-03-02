@@ -33,3 +33,5 @@
 
 10. para ver las rutas lo hacemos con
     php artisan route:list
+
+11. las fotos se guardan en storage/app/public/uploads

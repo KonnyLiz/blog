@@ -25,6 +25,7 @@ class EmpleadosController extends Controller
     public function create()
     {
         //
+        return view('empleados.create');
     }
 
     /**
@@ -35,7 +36,21 @@ class EmpleadosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // obteniendo los datos de la peticion post
+        // $datos = $request->all();
+
+        // traemos todo menos el token
+        $datos = $request->except('_token');
+
+        // para obtener y guardar el archivo
+        if($request->hasFile('foto')){
+            $datos['foto'] = $request->file('foto')->store('uploads', 'public');
+        }
+
+        // insertamos
+        Empleados::insert($datos);
+
+        return response()->json($datos);
     }
 
     /**
