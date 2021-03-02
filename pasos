@@ -20,3 +20,16 @@
     database/migrations/archivo
     https://laravel.com/docs/5.0/schema
     Mas ayuda para crear tablas
+
+7. para las rutas para web, lo hacemos en
+    routes/web.php
+
+8. creando las vistas entro de la carpeta con blade
+    crear vista empleados/index.blade.php
+
+9. creando la rutas
+    routes/web.php
+    - se crean las rutas apuntando al controlador y metodo
+
+10. para ver las rutas lo hacemos con
+    php artisan route:list
