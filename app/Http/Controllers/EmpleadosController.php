@@ -52,7 +52,7 @@ class EmpleadosController extends Controller
         // insertamos
         Empleados::insert($datos);
 
-        return response()->json($datos);
+        return redirect('empleados');
     }
 
     /**
@@ -72,9 +72,12 @@ class EmpleadosController extends Controller
      * @param  \App\Models\Empleados  $empleados
      * @return \Illuminate\Http\Response
      */
-    public function edit(Empleados $empleados)
+    public function edit($id)
     {
-        //
+        $e = Empleados::findOrFail($id);
+
+        // enviamos la informacion compactada a travez del enlace
+        return view('empleados.edit', compact('e'));
     }
 
     /**
@@ -84,9 +87,18 @@ class EmpleadosController extends Controller
      * @param  \App\Models\Empleados  $empleados
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Empleados $empleados)
+    public function update(Request $request, $id)
     {
-        //
+        // traemos todo menos el token y metodo
+        $datos = $request->except(['_token', '_method']);
+
+        // para obtener y guardar el archivo
+        if($request->hasFile('foto')){
+            $datos['foto'] = $request->file('foto')->store('uploads', 'public');
+        }
+
+        Empleados::where('id', '=', $id)->update($datos);
+        return redirect('empleados');
     }
 
     /**
@@ -95,8 +107,10 @@ class EmpleadosController extends Controller
      * @param  \App\Models\Empleados  $empleados
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Empleados $empleados)
+    public function destroy($id)
     {
-        //
+        // para borrar
+        Empleados::destroy($id);
+        return redirect('empleados');
     }
 }

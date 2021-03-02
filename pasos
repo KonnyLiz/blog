@@ -43,4 +43,8 @@
         composer install
     * crear la BD
         desde consola se crea y luego se crea un usuario con privilegios de administracion 
-        para que laravel pueda editar la BD
+        para que laravel pueda editar la BD\
+
+13. para la publicacion del storage
+    php artisan storage:link
+    generamos el link para las fotos
