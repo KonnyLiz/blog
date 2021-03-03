@@ -1,21 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Empleados</title>
-</head>
-
-<body>
+@section('content')
+<div class="container">
 <h1>Mostrando lista de empleados</h1>
 
     @if(Session::has('mensaje'))
     {{ Session::get('mensaje') }}
     @endif
 
-    <a href="{{ url('empleados/create') }}">Nuevo</a>
+    <a href="{{ url('empleados/create') }}" class="btn btn-outline-info">Nuevo</a>
+    <br>
     <table class="table table-light">
         <thead class="thead-ligth">
             <tr>
@@ -39,24 +33,24 @@
                 <td> {{ $e->apellido }} </td>
                 <td> {{ $e->correo }} </td>
                 <td>
-                    <a href="{{ url('/empleados/'. $e->id . '/edit') }}">
+                    <a href="{{ url('/empleados/'. $e->id . '/edit') }}" class="btn btn-outline-warning">
                         Editar
                     </a>
-                    |
-                    <form action="{{ url('/empleados/'.$e->id) }}" method="post">
+                    
+                    <!-- d-inline mueve el form a la par de editar -->
+                    <form action="{{ url('/empleados/'.$e->id) }}" method="post" class="d-inline">
                         <!-- Llave que dejara entrar al metodo de laravel, crea un token -->
                         {{ csrf_field() }}
 
                         <!-- agregamos el tipo de solicitud que haremos -->
                         {{ method_field('DELETE') }}
 
-                        <button type="submit" onclick="return confirm('borrar?');">Borrar</button>
+                        <button type="submit" onclick="return confirm('borrar?');" class="btn btn-outline-danger">Borrar</button>
                     </form>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
-</body>
-
-</html>
+</div>
+@endsection

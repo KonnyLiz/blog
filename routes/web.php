@@ -14,21 +14,19 @@ use App\Http\Controllers\EmpleadosController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 // rutas de empleados manualmente
 // los envialos a los controladores y metodos
 // Route::get('/empleados', [EmpleadosController::class, 'index']);
 
 // podemos crear un resource o repositorio de rutas con
-Route::resource('empleados', 'App\Http\Controllers\EmpleadosController');
+// con middleware le dicimos que proteja las rutas con autenticacion
+Route::resource('empleados', 'App\Http\Controllers\EmpleadosController')->middleware('auth');
 
-Auth::routes();
+// deshabilitaremos algunas funciones por defecto del auth
+Auth::routes(['register'=> false, 'reset' => false]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [EmpleadosController::class, 'index'])->name('home'); 
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['middleware' => 'auth'])->group(function () {
+    Route::get('/', [EmpleadosController::class, 'index'])->name('home'); 
+});

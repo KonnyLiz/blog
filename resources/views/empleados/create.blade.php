@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
 <h1>Crear empleado</h1>
 <!-- Mandando datos con instrucciones blade -->
     <form method="post" action="{{ url('/empleados') }}" enctype="multipart/form-data">
@@ -34,5 +29,5 @@
     </form>
 
     <a href="{{ url('empleados/') }}">Regresar</a>
-</body>
-</html>
+</div>
+@endsection
