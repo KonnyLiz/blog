@@ -27,7 +27,7 @@
                 <!-- loop es para mostrar el numero de iteraciones -->
                 <td>{{ $loop->iteration }}</td>
                 <td>  
-                    <img src="{{ asset('storage') . '/' . $e->foto }}" alt="" width="150">
+                    <img src="{{ asset('storage') . '/' . $e->foto }}" alt="" class="img-thumbnail img-fluid">
                 </td>
                 <td> {{ $e->nombre }} </td>
                 <td> {{ $e->apellido }} </td>

@@ -26,7 +26,7 @@
         <br>
 
         <label for="foto">{{ 'Foto' }}</label>
-        <img src="{{ asset('storage') . '/' . $e->foto }}" alt="" width="150">
+        <img src="{{ asset('storage') . '/' . $e->foto }}" alt="" width="150" class="img-thumbnail img-fluid">
         <br>
         <input type="file" name="foto" id="foto" value="{{ $e->foto }}">
         <br>
