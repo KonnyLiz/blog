@@ -32,5 +32,7 @@
 
         <input type="submit" value="Guardar">
     </form>
+
+    <a href="{{ url('empleados/') }}">Regresar</a>
 </body>
 </html>

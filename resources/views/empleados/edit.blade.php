@@ -36,7 +36,8 @@
         <input type="file" name="foto" id="foto" value="{{ $e->foto }}">
         <br>
 
-        <input type="submit" value="Editar">
+        <input type="submit" value="Guardar">
     </form>
+    <a href="{{ url('empleados/') }}">Regresar</a>
 </body>
 </html>

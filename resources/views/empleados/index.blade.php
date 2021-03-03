@@ -5,10 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Empleados</title>
 </head>
 
 <body>
+<h1>Mostrando lista de empleados</h1>
+
+    @if(Session::has('mensaje'))
+    {{ Session::get('mensaje') }}
+    @endif
+
+    <a href="{{ url('empleados/create') }}">Nuevo</a>
     <table class="table table-light">
         <thead class="thead-ligth">
             <tr>

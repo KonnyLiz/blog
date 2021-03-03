@@ -24,3 +24,11 @@ Route::get('/', function () {
 
 // podemos crear un resource o repositorio de rutas con
 Route::resource('empleados', 'App\Http\Controllers\EmpleadosController');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

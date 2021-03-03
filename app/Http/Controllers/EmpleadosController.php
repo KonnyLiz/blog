@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Empleados;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EmpleadosController extends Controller
 {
@@ -52,7 +53,7 @@ class EmpleadosController extends Controller
         // insertamos
         Empleados::insert($datos);
 
-        return redirect('empleados');
+        return redirect('empleados')->with('mensaje', 'Agregado');
     }
 
     /**
@@ -91,9 +92,11 @@ class EmpleadosController extends Controller
     {
         // traemos todo menos el token y metodo
         $datos = $request->except(['_token', '_method']);
+        $e = Empleados::findOrFail($id);
 
         // para obtener y guardar el archivo
-        if($request->hasFile('foto')){
+        if($request->hasFile('foto')){    
+            Storage::delete('public/' . $e->foto);
             $datos['foto'] = $request->file('foto')->store('uploads', 'public');
         }
 
@@ -109,8 +112,13 @@ class EmpleadosController extends Controller
      */
     public function destroy($id)
     {
-        // para borrar
-        Empleados::destroy($id);
-        return redirect('empleados');
+        // para borrar la informacion y la foto
+        $e = Empleados::findOrFail($id);
+
+        if(Storage::delete('public/' . $e->foto)){
+            Empleados::destroy($id);
+        }
+
+        return redirect('empleados')->with('mensaje', 'Borrado');
     }
 }

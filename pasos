@@ -48,3 +48,18 @@
 13. para la publicacion del storage
     php artisan storage:link
     generamos el link para las fotos
+
+14. integrando bootstrap en laravel
+    instalamos el paquete
+        composer require laravel/ui 
+    
+    instalamos bootstrap con autenticacion
+        php artisan ui bootstrap --auth
+
+    compilamos con npm la auth
+        npm install
+
+    compilamos en desarrollador
+        npm run development
+
+15
